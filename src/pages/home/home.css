@@ -1,0 +1,9 @@
+@media screen and (max-width: 776px)  {
+    .heroHeader {
+        height: 20vh;
+    }
+}
+
+.heroHeader p {
+    margin: 0;
+}
