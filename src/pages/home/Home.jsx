@@ -2,7 +2,7 @@ import React from 'react';
 import {Container, Grid} from "@mui/material";
 import './home.css'
 import {HeroHeader} from "../../components/HeroHeader.jsx";
-import {Pricing} from "../../components/Pricing.jsx";
+// import {Pricing} from "../../components/Pricing.jsx";
 const Home = () => {
     return (
         <div>
@@ -10,7 +10,7 @@ const Home = () => {
             <Container sx={{
                 marginTop: "100px",
             }}>
-                <Pricing />
+                {/*<Pricing />*/}
 
                 <p>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique unde

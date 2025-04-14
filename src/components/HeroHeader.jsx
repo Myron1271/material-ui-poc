@@ -25,7 +25,7 @@ export const HeroHeader = () => {
                     }}>
                         Slimme software begint bij ons!
                     </Typography>
-                    <Typography variant={"p"}>
+                    <Typography>
                         Voor elke klant is er wel wat!
                     </Typography>
                 </Grid>
