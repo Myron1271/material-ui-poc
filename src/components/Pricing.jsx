@@ -1,280 +1,88 @@
 import React from "react";
-import Box from '@mui/joy/Box';
-import Button from '@mui/joy/Button';
-import Card from '@mui/joy/Card';
-import CardActions from '@mui/joy/CardActions';
-import Chip from '@mui/joy/Chip';
-import Divider from '@mui/joy/Divider';
-import List from '@mui/joy/List';
-import ListItem from '@mui/joy/ListItem';
-import ListItemDecorator from '@mui/joy/ListItemDecorator';
-import Typography from '@mui/joy/Typography';
-import Check from '@mui/icons-material/Check';
-import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
+import {
+    Box,
+    Container,
+    Grid,
+    Typography,
+    Card,
+    CardContent,
+    CardActions,
+    Button,
+} from "@mui/material";
 
-export const Pricing = () => {
+const pricingOptions = [
+    {
+        title: "Basic - Gratis",
+        price: "0",
+        features: ["1 project met MUI", "beperkt toegang tot Joy UI"],
+    },
+    {
+        title: "Pro",
+        price: "€10",
+        features: ["10 projects", "Beparkte toegang tot Joy UI"],
+        featured: true,
+    },
+    {
+        title: "Ultimate",
+        price: "€25",
+        features: ["Oneindig projecten", "Volledig toch tot Joy UI"],
+    },
+];
+
+const Pricing = () => {
     return (
-        <Box
-            sx={{
-                width: '100%',
-                display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 300px), 1fr))',
-                gap: 2,
-            }}
-        >
-            <Card size="lg" variant="outlined">
-                <Chip size="sm" variant="outlined" color="neutral">
-                    BASIC
-                </Chip>
-                <Typography level="h2">Professional</Typography>
-                <Divider inset="none" />
-                <List size="sm" sx={{ mx: 'calc(-1 * var(--ListItem-paddingX))' }}>
-                    <ListItem>
-                        <ListItemDecorator>
-                            <Check />
-                        </ListItemDecorator>
-                        Virtual Credit Cards
-                    </ListItem>
-                    <ListItem>
-                        <ListItemDecorator>
-                            <Check />
-                        </ListItemDecorator>
-                        Financial Analytics
-                    </ListItem>
-                    <ListItem>
-                        <ListItemDecorator>
-                            <Check />
-                        </ListItemDecorator>
-                        Checking Account
-                    </ListItem>
-                    <ListItem>
-                        <ListItemDecorator>
-                            <Check />
-                        </ListItemDecorator>
-                        API Integration
-                    </ListItem>
-                </List>
-                <Divider inset="none" />
-                <CardActions>
-                    <Typography level="title-lg" sx={{ mr: 'auto' }}>
-                        3.990€{' '}
-                        <Typography textColor="text.tertiary" sx={{ fontSize: 'sm' }}>
-                            / month
-                        </Typography>
-                    </Typography>
-                    <Button
-                        variant="soft"
-                        color="neutral"
-                        endDecorator={<KeyboardArrowRight />}
-                    >
-                        Start now
-                    </Button>
-                </CardActions>
-            </Card>
-            <Card
-                size="lg"
-                variant="solid"
-                color="neutral"
-                invertedColors
-                sx={{ bgcolor: 'neutral.900' }}
-            >
-                <Chip size="sm" variant="outlined">
-                    MOST POPULAR
-                </Chip>
-                <Typography level="h2">Unlimited</Typography>
-                <Divider inset="none" />
-                <List
-                    size="sm"
-                    sx={{
-                        display: 'grid',
-                        gridTemplateColumns: '1fr 1fr',
-                        mx: 'calc(-1 * var(--ListItem-paddingX))',
-                    }}
-                >
-                    <ListItem>
-                        <ListItemDecorator>
-                            <Check />
-                        </ListItemDecorator>
-                        Virtual Credit Cards
-                    </ListItem>
-                    <ListItem>
-                        <ListItemDecorator>
-                            <Check />
-                        </ListItemDecorator>
-                        Financial Analytics
-                    </ListItem>
-                    <ListItem>
-                        <ListItemDecorator>
-                            <Check />
-                        </ListItemDecorator>
-                        Checking Account
-                    </ListItem>
-                    <ListItem>
-                        <ListItemDecorator>
-                            <Check />
-                        </ListItemDecorator>
-                        API Integration
-                    </ListItem>
-                    <ListItem>
-                        <ListItemDecorator>
-                            <Check />
-                        </ListItemDecorator>
-                        Cancel Anytime
-                    </ListItem>
-                </List>
-                <Divider inset="none" />
-                <CardActions>
-                    <Typography level="title-lg" sx={{ mr: 'auto' }}>
-                        5.990€{' '}
-                        <Typography textColor="text.tertiary" sx={{ fontSize: 'sm' }}>
-                            / month
-                        </Typography>
-                    </Typography>
-                    <Button endDecorator={<KeyboardArrowRight />}>Start now</Button>
-                </CardActions>
-            </Card>
+        <Box id="pricing" sx={{ py: 10, backgroundColor: "#f9f9f9" }}>
+            <Container>
+                <Typography variant="h3" align="center" gutterBottom>
+                    Onze Prijzen
+                </Typography>
+                <Grid container spacing={4} justifyContent="center">
+                    {pricingOptions.map((option) => (
+                        <Grid item xs={12} sm={6} md={4} key={option.title}>
+                            <Card
+                                elevation={option.featured ? 10 : 4}
+                                sx={{
+                                    height: "100%",
+                                    display: "flex",
+                                    flexDirection: "column",
+                                    justifyContent: "space-between",
+                                    marginTop: "15px",
+                                    p: 2,
+                                    minHeight: 380,
+                                    transform: option.featured ? "scale(1.05)" : "none",
+                                    border:
+                                        option.featured ? "2px solid #1976d2" : "1px solid #e0e0e0",
+                                }}
+                            >
+                                <CardContent>
+                                    <Typography variant="h5" gutterBottom>
+                                        {option.title}
+                                    </Typography>
+                                    <Typography variant="h4" gutterBottom>
+                                        {option.price}/maand
+                                    </Typography>
+                                    {option.features.map((feature, i) => (
+                                        <Typography key={i} variant="body1" sx={{ mb: 1 }}>
+                                            • {feature}
+                                        </Typography>
+                                    ))}
+                                </CardContent>
+                                <CardActions>
+                                    <Button
+                                        fullWidth
+                                        size="large"
+                                        variant={option.featured ? "contained" : "outlined"}
+                                    >
+                                        Selecteer
+                                    </Button>
+                                </CardActions>
+                            </Card>
+                        </Grid>
+                    ))}
+                </Grid>
+            </Container>
         </Box>
     );
-}
+};
 
-
-
-/*import * as React from 'react';
-import Box from '@mui/joy/Box';
-import Button from '@mui/joy/Button';
-import Card from '@mui/joy/Card';
-import CardActions from '@mui/joy/CardActions';
-import Chip from '@mui/joy/Chip';
-import Divider from '@mui/joy/Divider';
-import List from '@mui/joy/List';
-import ListItem from '@mui/joy/ListItem';
-import ListItemDecorator from '@mui/joy/ListItemDecorator';
-import Typography from '@mui/joy/Typography';
-import Check from '@mui/icons-material/Check';
-import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
-
-export default function Pricing() {
-    return (
-        <Box
-            sx={{
-                width: '100%',
-                display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 300px), 1fr))',
-                gap: 2,
-            }}
-        >
-            <Card size="lg" variant="outlined">
-                <Chip size="sm" variant="outlined" color="neutral">
-                    BASIC
-                </Chip>
-                <Typography level="h2">Professional</Typography>
-                <Divider inset="none" />
-                <List size="sm" sx={{ mx: 'calc(-1 * var(--ListItem-paddingX))' }}>
-                    <ListItem>
-                        <ListItemDecorator>
-                            <Check />
-                        </ListItemDecorator>
-                        Virtual Credit Cards
-                    </ListItem>
-                    <ListItem>
-                        <ListItemDecorator>
-                            <Check />
-                        </ListItemDecorator>
-                        Financial Analytics
-                    </ListItem>
-                    <ListItem>
-                        <ListItemDecorator>
-                            <Check />
-                        </ListItemDecorator>
-                        Checking Account
-                    </ListItem>
-                    <ListItem>
-                        <ListItemDecorator>
-                            <Check />
-                        </ListItemDecorator>
-                        API Integration
-                    </ListItem>
-                </List>
-                <Divider inset="none" />
-                <CardActions>
-                    <Typography level="title-lg" sx={{ mr: 'auto' }}>
-                        3.990€{' '}
-                        <Typography textColor="text.tertiary" sx={{ fontSize: 'sm' }}>
-                            / month
-                        </Typography>
-                    </Typography>
-                    <Button
-                        variant="soft"
-                        color="neutral"
-                        endDecorator={<KeyboardArrowRight />}
-                    >
-                        Start now
-                    </Button>
-                </CardActions>
-            </Card>
-            <Card
-                size="lg"
-                variant="solid"
-                color="neutral"
-                invertedColors
-                sx={{ bgcolor: 'neutral.900' }}
-            >
-                <Chip size="sm" variant="outlined">
-                    MOST POPULAR
-                </Chip>
-                <Typography level="h2">Unlimited</Typography>
-                <Divider inset="none" />
-                <List
-                    size="sm"
-                    sx={{
-                        display: 'grid',
-                        gridTemplateColumns: '1fr 1fr',
-                        mx: 'calc(-1 * var(--ListItem-paddingX))',
-                    }}
-                >
-                    <ListItem>
-                        <ListItemDecorator>
-                            <Check />
-                        </ListItemDecorator>
-                        Virtual Credit Cards
-                    </ListItem>
-                    <ListItem>
-                        <ListItemDecorator>
-                            <Check />
-                        </ListItemDecorator>
-                        Financial Analytics
-                    </ListItem>
-                    <ListItem>
-                        <ListItemDecorator>
-                            <Check />
-                        </ListItemDecorator>
-                        Checking Account
-                    </ListItem>
-                    <ListItem>
-                        <ListItemDecorator>
-                            <Check />
-                        </ListItemDecorator>
-                        API Integration
-                    </ListItem>
-                    <ListItem>
-                        <ListItemDecorator>
-                            <Check />
-                        </ListItemDecorator>
-                        Cancel Anytime
-                    </ListItem>
-                </List>
-                <Divider inset="none" />
-                <CardActions>
-                    <Typography level="title-lg" sx={{ mr: 'auto' }}>
-                        5.990€{' '}
-                        <Typography textColor="text.tertiary" sx={{ fontSize: 'sm' }}>
-                            / month
-                        </Typography>
-                    </Typography>
-                    <Button endDecorator={<KeyboardArrowRight />}>Start now</Button>
-                </CardActions>
-            </Card>
-        </Box>
-    );
-}
-*/
+export default Pricing;

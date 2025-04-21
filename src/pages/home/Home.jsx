@@ -1,11 +1,11 @@
 import React from 'react';
 import {Container, Grid} from "@mui/material";
 import './home.css'
-import {HeroHeader} from "../../components/HeroHeader.jsx";
-// import {Pricing} from "../../components/Pricing.jsx";
 const Home = () => {
     return (
         <div>
+
+
             <HeroHeader />
             <Container sx={{
                 marginTop: "100px",
